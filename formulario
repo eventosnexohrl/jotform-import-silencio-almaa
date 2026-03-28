@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>formulario-inscricao-livro.html</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem;
+      --color-bg: #f5f0e9; --color-surface: #fbf8f3; --color-surface-2: #efe6da; --color-border: #d2c3b1;
+      --color-text: #2b2118; --color-text-muted: #6b5a4a; --color-text-inverse: #fbf7f1;
+      --color-primary: #8f5d3f; --color-primary-hover: #74492f; --color-primary-highlight: #e8d8ca;
+      --color-success: #437a22; --color-warning: #964219; --radius-sm: .375rem; --radius-md: .75rem; --radius-lg: 1.25rem; --radius-full: 9999px;
+      --shadow-sm: 0 1px 2px rgba(43,33,24,.08); --shadow-md: 0 12px 32px rgba(43,33,24,.12);
+      --font-display: 'Cormorant Garamond', Georgia, serif; --font-body: 'Inter', Arial, sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box} html{-webkit-text-size-adjust:none;text-size-adjust:none;scroll-behavior:smooth} body{margin:0;min-height:100vh;font-family:var(--font-body);font-size:var(--text-base);line-height:1.6;background:radial-gradient(circle at top, rgba(143,93,63,.16), transparent 35%), linear-gradient(180deg, #4d392e 0%, #2e241d 28%, #1f1915 100%);color:var(--color-text-inverse)} img,svg{display:block;max-width:100%} button,input,select,textarea{font:inherit} a{text-decoration:none;color:inherit} .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .page{min-height:100vh;padding:var(--space-4)} .shell{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:var(--space-8);align-items:start}
+    .poster{position:sticky;top:var(--space-4);padding:var(--space-10);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-lg);background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));backdrop-filter: blur(10px);box-shadow:var(--shadow-md)}
+    .eyebrow{font-size:var(--text-lg);font-family:var(--font-display);color:#f3dfc5;letter-spacing:.02em} h1{margin:.2rem 0 0;font-family:var(--font-display);font-size:var(--text-2xl);line-height:.95;color:#fff3df;font-weight:600;max-width:10ch} .author{margin-top:var(--space-6);font-family:var(--font-display);font-size:var(--text-xl);color:#f3dfc5} .quote{margin-top:var(--space-8);font-family:var(--font-display);font-size:var(--text-lg);font-style:italic;color:#f2e4d3;max-width:18ch}
+    .meta{margin-top:var(--space-8);display:grid;gap:var(--space-4)} .meta-item{display:flex;gap:var(--space-3);align-items:flex-start;color:#fff8ef} .meta-icon{width:2.25rem;height:2.25rem;border-radius:var(--radius-full);display:grid;place-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);font-size:1rem;flex:none}
+    .capacity{margin-top:var(--space-8);display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);padding:var(--space-4) var(--space-5);background:rgba(232,216,202,.14);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-md)} .capacity strong{display:block;font-size:var(--text-lg);color:#fff3df} .capacity span{color:#e7d8c7;font-size:var(--text-sm)} .pill{display:inline-flex;align-items:center;gap:.4rem;padding:.55rem .9rem;border-radius:var(--radius-full);background:#f4d8b8;color:#3a2418;font-weight:700;font-size:var(--text-sm)}
+    .card{padding:var(--space-8);background:var(--color-surface);color:var(--color-text);border-radius:var(--radius-lg);box-shadow:var(--shadow-md)} .card h2{margin:0 0 var(--space-2);font-family:var(--font-display);font-size:var(--text-xl);line-height:1;color:#33261c} .card p{margin:0 0 var(--space-6);color:var(--color-text-muted);max-width:60ch}
+    form{display:grid;gap:var(--space-5)} .grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)} label{display:grid;gap:var(--space-2);font-weight:600;color:#45352a} .help{font-weight:400;font-size:var(--text-sm);color:var(--color-text-muted)} input,select,textarea{width:100%;padding:.95rem 1rem;border-radius:var(--radius-md);border:1px solid var(--color-border);background:#fff;color:#2b2118} textarea{min-height:120px;resize:vertical} input:focus,select:focus,textarea:focus{outline:2px solid rgba(143,93,63,.28);border-color:var(--color-primary)}
+    .choice-row{display:grid;gap:var(--space-3)} .choice{display:flex;align-items:flex-start;gap:.75rem;padding:1rem;border:1px solid var(--color-border);border-radius:var(--radius-md);background:var(--color-surface-2)} .choice input{width:1.1rem;height:1.1rem;margin-top:.2rem} .choice strong{display:block} .note{padding:var(--space-4);border-radius:var(--radius-md);background:var(--color-primary-highlight);color:#4f3627;font-size:var(--text-sm)}
+    .actions{display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center} .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.9rem 1.25rem;border-radius:var(--radius-full);font-weight:700;border:0} .btn-primary{background:var(--color-primary);color:#fff} .btn-primary:hover{background:var(--color-primary-hover)} .btn-secondary{background:transparent;color:var(--color-primary);border:1px solid var(--color-border)} .fine{font-size:var(--text-sm);color:var(--color-text-muted)}
+    .footer-info{margin-top:var(--space-6);padding-top:var(--space-5);border-top:1px solid var(--color-border);display:grid;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-muted)}
+    @media (max-width: 900px){.shell{grid-template-columns:1fr}.poster{position:relative;top:auto}} @media (max-width: 640px){.grid{grid-template-columns:1fr}.poster,.card{padding:var(--space-6)} h1{max-width:12ch}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="shell">
+      <section class="poster" aria-labelledby="evento-titulo">
+        <div class="eyebrow">Apresentação do Livro</div>
+        <h1 id="evento-titulo">No Silêncio, a Alma tem Voz</h1>
+        <div class="author">Hélder Rodrigues Lopes</div>
+        <p class="quote">Há silêncios que gritam mais alto do que qualquer palavra.</p>
+        <div class="meta">
+          <div class="meta-item"><div class="meta-icon">📅</div><div><strong>17 de abril de 2026</strong><br>sexta-feira</div></div>
+          <div class="meta-item"><div class="meta-icon">🕕</div><div><strong>18H00</strong><br>abertura de portas às 17H30</div></div>
+          <div class="meta-item"><div class="meta-icon">📍</div><div><strong>Museu Municipal de Faro</strong><br>Sala de Pintura Antiga</div></div>
+          <div class="meta-item"><div class="meta-icon">🎤</div><div><strong>Apresentação da obra</strong><br>Henrique Gomes</div></div>
+        </div>
+        <div class="capacity">
+          <div><strong>80 vagas disponíveis</strong><span>Inscrição online obrigatória até esgotar.</span></div>
+          <div class="pill">Lugares limitados</div>
+        </div>
+      </section>
+      <section class="card" aria-labelledby="form-title">
+        <h2 id="form-title">Modelo de formulário de inscrição</h2>
+        <p>Este modelo está pronto para copiar para Google Forms, Typeform, Jotform ou para publicar como página própria. A estrutura foi pensada para controlar lotação, recolher contactos e facilitar a confirmação das 80 vagas.</p>
+        <form>
+          <div class="grid">
+            <label>Nome completo
+              <input type="text" placeholder="Ex.: Tiago Dias" />
+            </label>
+            <label>Email
+              <input type="email" placeholder="nome@email.com" />
+            </label>
+          </div>
+          <div class="grid">
+            <label>Telefone
+              <input type="tel" placeholder="Ex.: 9XXXXXXXX" />
+            </label>
+            <label>Concelho / Localidade
+              <input type="text" placeholder="Ex.: Faro" />
+            </label>
+          </div>
+          <div class="grid">
+            <label>Número de lugares pretendidos
+              <select>
+                <option>1 lugar</option>
+                <option>2 lugares</option>
+              </select>
+              <span class="help">Sugestão: limitar a 2 lugares por inscrição para melhor gestão.</span>
+            </label>
+            <label>Faixa etária
+              <select>
+                <option>Menos de 18</option>
+                <option>18 a 30</option>
+                <option>31 a 45</option>
+                <option>46 a 60</option>
+                <option>Mais de 60</option>
+                <option>Prefiro não indicar</option>
+              </select>
+            </label>
+          </div>
+          <div class="choice-row">
+            <label>Como soube deste evento?</label>
+            <label class="choice"><input type="radio" name="origem" /><span><strong>Redes sociais</strong><span class="help">Instagram, Facebook ou WhatsApp.</span></span></label>
+            <label class="choice"><input type="radio" name="origem" /><span><strong>Convite direto</strong><span class="help">Autor, organização ou parceiros.</span></span></label>
+            <label class="choice"><input type="radio" name="origem" /><span><strong>Museu / parceiro</strong><span class="help">Museu Municipal de Faro, AIPAR, NEXO ou outra entidade.</span></span></label>
+          </div>
+          <label>Observações ou necessidades especiais
+            <textarea placeholder="Acessibilidade, mobilidade reduzida, reserva conjunta ou outras informações úteis."></textarea>
+          </label>
+          <div class="choice-row">
+            <label class="choice"><input type="checkbox" /><span><strong>Confirmo que os meus dados podem ser usados para gestão da inscrição</strong><span class="help">Necessário para validar presença e enviar confirmação.</span></span></label>
+            <label class="choice"><input type="checkbox" /><span><strong>Autorizo contacto por email ou telefone</strong><span class="help">Para confirmação de vaga, lista de espera ou alterações de última hora.</span></span></label>
+          </div>
+          <div class="note"><strong>Configuração recomendada para plataforma online:</strong> ativar confirmação automática por email, encerrar o formulário ao atingir 80 vagas e criar lista de espera a partir da vaga 81.</div>
+          <div class="actions">
+            <button type="button" class="btn btn-primary">Submeter inscrição</button>
+            <button type="button" class="btn btn-secondary">Guardar rascunho</button>
+          </div>
+          <div class="fine">Texto de confirmação sugerido: “A sua inscrição foi recebida com sucesso. Irá receber confirmação final mediante disponibilidade de vagas.”</div>
+        </form>
+        <div class="footer-info">
+          <div><strong>Campos obrigatórios:</strong> nome, email, telefone, nº de lugares, consentimento de dados.</div>
+          <div><strong>Automação sugerida:</strong> vagas confirmadas 1-80; lista de espera automática a partir daí.</div>
+          <div><strong>Prazo sugerido:</strong> inscrições abertas até 16 de abril de 2026 às 18h00, ou até lotação esgotada.</div>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
